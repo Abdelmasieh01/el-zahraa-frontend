@@ -23,7 +23,7 @@ const Experience = () => {
   }, []);
 
   useEffect(() => {
-    axios.get(API + "/categories").then((response) => {
+    axios.get(API + "categories").then((response) => {
       setCategory(response.data);
     });
 
