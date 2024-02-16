@@ -43,11 +43,7 @@ const page = () => {
             {t("title")}
           </h1>
           <h1 className="text-2xl md:text-2xl font-bold mb-5"></h1>
-          <p className="text-start text-xl">
-            {locale == "en"
-              ? items.description_about_en
-              : items.description_about_ar}
-          </p>
+          <p className="text-start text-xl">{items.description_about_en}</p>
         </div>
       </div>
 
