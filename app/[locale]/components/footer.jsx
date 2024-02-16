@@ -47,9 +47,9 @@ function Footer() {
               <BsFillCartCheckFill className="text-2xl text-light-blue-800"/>{t("ourproducts")}
             </h2>
             <ul className=" text-gray-400 font-medium">
-              {category.map((item) => {
+              {category.map((item, index) => {
                 return (
-                  <li className="mb-4">
+                  <li className="mb-4" key={index}>
                     <a href={`/${item.name_en}`} className=" hover:underline flex items-center gap-2">
                     <MdProductionQuantityLimits className="text-cyan-700 text-2xl" />  {locale == "en" ? item.name_en : item.name_ar}
                     </a>

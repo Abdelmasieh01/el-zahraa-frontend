@@ -72,9 +72,9 @@ const Experience = () => {
           <ul className="grid grid-cols-2 gap-12 font-bold">
             
                 {
-                  category.map((item)=>{
+                  category.map((item, index)=>{
                     return(
-                      <li className="hover:text-red-600 transition-all duration-150">
+                      <li className="hover:text-red-600 transition-all duration-150" key={index}>
                         <a href={`/${item.name_en}`} >
                         {locale=="en"?item.name_en:item.name_ar}
                         </a>

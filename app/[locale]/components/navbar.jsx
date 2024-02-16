@@ -99,10 +99,10 @@ export default function Navbar() {
                       : "invisible opacity-0 transition-opacity duration-500"
                   }`}
                 >
-                  {category.map((item) => {
+                  {category.map((item, index) => {
                     return (
                       <li
-                        
+                        key={index}
                         className="px-4 text-white pb-3 hover:cursor-pointer hover:bg-gray-800 pt-3"
                       >
                         <a href={`/${item.name_en}`}>{locale=="en"?item.name_en:item.name_ar}</a>

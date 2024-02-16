@@ -62,8 +62,8 @@ const Slider2 = () => {
       {items.map((item,index)=>{
         return(
     
-          <div>
-          <SwiperSlide><Card image={item.image2}  title_en={item.name_en} title_ar={item.name_ar} description= {locale=="en"?item.description_en:item.description_ar}/></SwiperSlide>
+          <div key={index}>
+          <SwiperSlide key={index}><Card image={item.image2}  title_en={item.name_en} title_ar={item.name_ar} description= {locale=="en"?item.description_en:item.description_ar}/></SwiperSlide>
 
           </div>
         
