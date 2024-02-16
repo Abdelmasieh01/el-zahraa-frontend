@@ -49,6 +49,7 @@ const page = () => {
   return (
     <div className="flex justify-around flex-wrap mt-20 p-24">
       {loading ? (
+        filteredItems.length > 0 &&
         filteredItems.map((item, index) => {
           return (
             <div key={index}>

@@ -28,9 +28,9 @@ const page = () => {
   return loading === true ? (
     <div className=" bg-indigo-50">
       <div className="flex flex-col gap-10 mx-10 pt-10 pb-24 md:flex-row">
-        {loading && (
+        {loading && JSON.stringify(items) != "{}" && (
           <Avatar
-            src={`http://localhost:8000${items.images[1].image}`}
+            src={`${API}${items.images[1].image}`}
             color="pink"
             className="p-1 rounded-full w-[300px] h-[300px]  md:w-[400px] md:h-[400px] md:rounded-full md:hover:w-[420px] md:hover:h-[420px] duration-300 "
             withBorder={true}
@@ -43,7 +43,11 @@ const page = () => {
             {t("title")}
           </h1>
           <h1 className="text-2xl md:text-2xl font-bold mb-5"></h1>
-          <p className="text-start text-xl">{items.description_about_en}</p>
+          <p className="text-start text-xl">
+            {locale == "en"
+              ? items.description_about_en
+              : items.description_about_ar}
+          </p>
         </div>
       </div>
 

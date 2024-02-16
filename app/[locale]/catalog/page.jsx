@@ -1,6 +1,5 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-
+"use client";
+import React, { useEffect, useState } from "react";
 
 const page = () => {
   const [items, setItems] = useState([]);
@@ -20,7 +19,7 @@ const page = () => {
     <div>
       <iframe src={items.pdf} width="100%" height="700px"></iframe>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
