@@ -24,7 +24,7 @@ const page = () => {
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(API + "products")
+    fetch(API + "products/")
       .then((response) => {
         return response.json();
       })

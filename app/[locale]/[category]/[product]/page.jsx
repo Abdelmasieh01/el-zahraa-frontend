@@ -17,7 +17,7 @@ function Product() {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
   useEffect(() => {
-    axios.get(API + "products").then((response) => {
+    axios.get(API + "products/").then((response) => {
       setProducts(response.data);
       setLoading(true);
     });

@@ -21,7 +21,7 @@ function Footer() {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
   useEffect(() => {
-    fetch(API + "categories")
+    fetch(API + "categories/")
       .then((response) => response.json())
       .then((data) => setCategory(data))
       .catch((err) => console.log(err));

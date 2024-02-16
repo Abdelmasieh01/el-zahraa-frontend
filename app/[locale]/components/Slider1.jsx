@@ -18,7 +18,7 @@ const Slider1 = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(API + "categories")
+    fetch(API + "categories/")
       .then((response) => response.json())
       .then((data) => setItem(data))
       .catch((err) => console.log(err));
