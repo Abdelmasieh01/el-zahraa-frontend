@@ -31,7 +31,7 @@ const Slider1 = ({items}) => {
   return (
     <Carousel autoplay={true} loop={true} className="caro">
       {loading ? (
-        items.length > 0 && items.map((item, index) => {
+        items?.length > 0 && items.map((item, index) => {
           return (
             <div
               key={index}
@@ -47,7 +47,7 @@ const Slider1 = ({items}) => {
                     {locale == "en" ? item?.description_en : item?.description_ar}
                   </p>
                   <div className="flex justify-center gap-2">
-                    <a href={item.name_en}>
+                    <a href={item?.name_en}>
                       <button className="text-black bg-white rounded-lg py-3 px-7 text-xl transition-all duration-300 hover:bg-gray-300 ">
                         {t("more")}
                       </button>

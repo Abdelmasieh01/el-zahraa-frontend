@@ -4,28 +4,56 @@ import Experience from "./components/Experience";
 import "swiper/css";
 import Slider2 from "./components/Slider2";
 
-export const fetchProfileAndCategory = async () => {
-const API = process.env.NEXT_PUBLIC_BACKEND_API
-  const response = await fetch(`${API}` , { cache: 'force-cache' , next: { revalidate: 5 }} );
-  const item = await response.json();
+export const fetchProfile = async () => {
+  const API = process.env.NEXT_PUBLIC_BACKEND_API;
+  const response = await fetch(`${API}`, {
+    cache: "force-cache",
+    next: { revalidate: 5 },
+  });
+  const profile = await response.json();
+  const imageUrl = profile?.profile?.images[1]?.image
+  return {
+    profile,
+    imageUrl
 
-  const response2 = await fetch(`${API}categories/` , { cache: 'force-cache' , next: { revalidate: 5 }});
+  };
+};
+
+export const fetchCategories = async () => {
+  const API = process.env.NEXT_PUBLIC_BACKEND_API;
+
+  const response2 = await fetch(`${API}categories/`, {
+    cache: "force-cache",
+    next: { revalidate: 5 },
+  });
   const category = await response2.json();
 
   return {
-      item,
-      category,
-    }
-  
+    category,
+  };
 };
 
-const page = async() => {
-  const { item, category } = await fetchProfileAndCategory();
+export const fetchProducts = async () => {
+  const API = process.env.NEXT_PUBLIC_BACKEND_API;
+  const response = await fetch(`${API}products/`, {
+    cache: "force-cache",
+    next: { revalidate: 5 },
+  });
+  const products = await response.json();
+  return {
+    products,
+  };
+};
+
+const page = async () => {
+  const  {profile , imageUrl} = await fetchProfile();
+  const  {category} = await fetchCategories();
+  const  {products} = await fetchProducts();
   return (
     <div>
       <Slider1 items={category} />
-      <Experience item={item} category={category} />
-      <Slider2 items={category}/>
+      <Experience item={profile} category={category} />
+      <Slider2 items={category} />
     </div>
   );
 };

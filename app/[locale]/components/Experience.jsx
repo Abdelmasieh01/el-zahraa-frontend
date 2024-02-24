@@ -32,11 +32,11 @@ export default function Experience({ item, category }) {
   //   })
   //   .catch((error) => console.error(error));
   // }, []);
-
+  const imageUrl =item?.profile?.images[0]?.image
   return (
     <div className="row lg:flex mb-20 justify">
       <div className="col-lg-6 p-0 lg:w-1/2">
-        <img className="hidden md:block w-full h-full" src={`${API}${item.profile.images[0].image}`} alt="Logo" />
+        <img className="hidden md:block w-full h-full" src={`${API}${imageUrl}`} alt="Logo" />
       </div>
       <div className="col-lg-6 p-0 lg:w-1/2 pl-10 pr-10 pt-10">
         <div>
@@ -61,7 +61,7 @@ export default function Experience({ item, category }) {
                     className="hover:text-red-600 transition-all duration-150"
                     key={index}
                   >
-                    <a href={`/${item.name_en}`}>
+                    <a href={`/${item?.name_en}`}>
                       {locale == "en" ? item?.name_en : item?.name_ar}
                     </a>
                   </li>

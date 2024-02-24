@@ -1,12 +1,10 @@
 "use client";
 
-import { Avatar, Typography } from "@material-tailwind/react";
-import axios from "axios";
+import { Avatar } from "@material-tailwind/react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 
 let API = process.env.NEXT_PUBLIC_BACKEND_API;
-export default function Members({ loading, items }) {
+export default function Members({ items }) {
   const t = useTranslations("Index");
   const locale = useLocale();
 
@@ -14,7 +12,7 @@ export default function Members({ loading, items }) {
     <>
       <h1 className="text-center text-2xl my-20 font-bold">{t("members")}</h1>
       <div className="flex flex-col md:flex-row  items-center justify-around text-center">
-        {loading &&
+        {
           items.map((item, index) => {
             return (
               <div

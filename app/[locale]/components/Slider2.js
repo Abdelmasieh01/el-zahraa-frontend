@@ -7,7 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -47,7 +46,7 @@ const Slider2 = ({items}) => {
         },
       }}
     >
-      {items.length > 0 && items.map((item, index) => {
+      {items?.length > 0 && items.map((item, index) => {
         return (
           <div key={item.id}>
             <SwiperSlide>
