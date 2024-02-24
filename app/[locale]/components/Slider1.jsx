@@ -13,17 +13,17 @@ const cairo = Cairo({
 });
 
 const API = process.env.NEXT_PUBLIC_BACKEND_API;
-const Slider1 = () => {
-  const [items, setItem] = useState([]);
-  const [loading, setLoading] = useState(false);
+const Slider1 = ({items}) => {
+  // const [items, setItem] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch(API + "categories/")
-      .then((response) => response.json())
-      .then((data) => setItem(data))
-      .catch((err) => console.log(err));
-    setLoading(true);
-  }, []);
+  // useEffect(() => {
+  //   fetch(API + "categories/")
+  //     .then((response) => response.json())
+  //     .then((data) => setItem(data))
+  //     .catch((err) => console.log(err));
+  //   setLoading(true);
+  // }, []);
 
   const t = useTranslations("Index");
   const locale = useLocale();
@@ -35,16 +35,16 @@ const Slider1 = () => {
           return (
             <div
               key={index}
-              className="relative h-full w-full animate__animated animate__fadeInDown"
+              className="relative h-[300px] md:h-full w-full animate__animated animate__fadeInDown"
             >
-              <img src={item.image1} alt="image 1" className="h-full" />
+              <img src={item?.image1} alt="image 1" className="h-full" />
               <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
                 <div className="w-3/4 text-center md:w-2/4">
                   <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl text-white font-bold">
-                    {locale == "en" ? item.name_en : item.name_ar}
+                    {locale == "en" ? item?.name_en : item?.name_ar}
                   </h1>
                   <p className="hidden md:block mb-12 opacity-80 text-2xl text-white">
-                    {locale == "en" ? item.description_en : item.description_ar}
+                    {locale == "en" ? item?.description_en : item?.description_ar}
                   </p>
                   <div className="flex justify-center gap-2">
                     <a href={item.name_en}>

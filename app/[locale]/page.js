@@ -1,22 +1,31 @@
-"use client";
-
 import React from "react";
 import Slider1 from "./components/Slider1";
 import Experience from "./components/Experience";
-import { Card } from "./components/Card";
-import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import Slider2 from "./components/Slider2";
 
-import { Cairo } from "@next/font/google";
+export const fetchProfileAndCategory = async () => {
+const API = process.env.NEXT_PUBLIC_BACKEND_API
+  const response = await fetch(`${API}` , { cache: 'force-cache' , next: { revalidate: 5 }} );
+  const item = await response.json();
 
-const page = () => {
+  const response2 = await fetch(`${API}categories/` , { cache: 'force-cache' , next: { revalidate: 5 }});
+  const category = await response2.json();
+
+  return {
+      item,
+      category,
+    }
+  
+};
+
+const page = async() => {
+  const { item, category } = await fetchProfileAndCategory();
   return (
     <div>
-      <Slider1 />
-      <Experience />
-      <Slider2 />
+      <Slider1 items={category} />
+      <Experience item={item} category={category} />
+      <Slider2 items={category}/>
     </div>
   );
 };

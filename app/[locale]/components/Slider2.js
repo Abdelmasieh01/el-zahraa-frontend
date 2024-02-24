@@ -11,16 +11,16 @@ import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import { useLocale, useTranslations } from "next-intl";
 
-const Slider2 = () => {
-  const [items, setItem] = useState([]);
+const Slider2 = ({items}) => {
+  // const [items, setItem] = useState([]);
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-  useEffect(() => {
-    fetch(API + "categories/")
-      .then((response) => response.json())
-      .then((data) => setItem(data))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch(API + "categories/")
+  //     .then((response) => response.json())
+  //     .then((data) => setItem(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const t = useTranslations("Index");
   const locale = useLocale();
@@ -52,11 +52,11 @@ const Slider2 = () => {
           <div key={item.id}>
             <SwiperSlide>
               <Card
-                image={item.image2}
-                title_en={item.name_en}
-                title_ar={item.name_ar}
+                image={item?.image2}
+                title_en={item?.name_en}
+                title_ar={item?.name_ar}
                 description={
-                  locale == "en" ? item.description_en : item.description_ar
+                  locale == "en" ? item?.description_en : item?.description_ar
                 }
               />
             </SwiperSlide>
