@@ -15,27 +15,27 @@ import { FcAbout } from "react-icons/fc";
 import { GiEgyptianSphinx } from "react-icons/gi";
 import { HiUserGroup } from "react-icons/hi";
 
-function Footer() {
-  const [items, setItems] = useState([]);
-  const [category, setCategory] = useState([]);
+function Footer({items,category}) {
+  // const [items, setItems] = useState([]);
+  // const [category, setCategory] = useState([]);
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-  useEffect(() => {
-    fetch(API + "categories/")
-      .then((response) => response.json())
-      .then((data) => setCategory(data))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch(API + "categories/")
+  //     .then((response) => response.json())
+  //     .then((data) => setCategory(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  useEffect(() => {
-    fetch(API)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        setItems(result.profile);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(API)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((result) => {
+  //       setItems(result.profile);
+  //     });
+  // }, []);
 
   const t = useTranslations("Index");
   const locale = useLocale();
@@ -49,16 +49,16 @@ function Footer() {
               {t("ourproducts")}
             </h2>
             <ul className=" text-gray-400 font-medium">
-              {category.length > 0 &&
+              {category?.length > 0 &&
                 category.map((item, index) => {
                   return (
                     <li className="mb-4" key={index}>
                       <a
-                        href={`/${item.name_en}`}
+                        href={`/${item?.name_en}`}
                         className=" hover:underline flex items-center gap-2"
                       >
-                        <MdProductionQuantityLimits className="text-cyan-700 text-2xl" />{" "}
-                        {locale == "en" ? item.name_en : item.name_ar}
+                        <MdProductionQuantityLimits className="text-cyan-700 text-2xl" />
+                        {locale == "en" ? item?.name_en : item?.name_ar}
                       </a>
                     </li>
                   );
@@ -74,7 +74,7 @@ function Footer() {
               <ul className="text-gray-400 font-medium">
                 <li className="mb-4">
                   <a
-                    href={`${items.facebook}`}
+                    href={`${items?.profile?.facebook}`}
                     className="hover:underline flex items-center gap-2"
                   >
                     <FaFacebook className="text-blue-500 text-2xl" />{" "}
@@ -83,7 +83,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    href={`${items.linkedin}`}
+                    href={`${items?.profile?.linkedin}`}
                     className="hover:underline  flex items-center gap-2"
                   >
                     {" "}
@@ -93,7 +93,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    href={`${items.whatsapp}`}
+                    href={`${items?.profile?.whatsapp}`}
                     className="hover:underline  flex items-center gap-2"
                   >
                     <IoLogoWhatsapp className="text-green-500 text-2xl" />{" "}
@@ -102,7 +102,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <a
-                    href={`${items.chat_me}`}
+                    href={`${items?.profile?.chat_me}`}
                     className="hover:underline  flex items-center gap-2"
                   >
                     <AiFillWechat className="text-green-500 text-2xl" />{" "}

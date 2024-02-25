@@ -6,7 +6,8 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import "animate.css";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-export default function Navbar() {
+export default function Navbar({category}) {
+  console.log(category)
   const t = useTranslations("Index");
   const locale = useLocale();
 
@@ -21,15 +22,17 @@ export default function Navbar() {
     contactUs: "Contact Us",
   });
 
-  const [category, setCategory] = useState([]);
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-  useEffect(() => {
-    fetch(API + "categories/")
-      .then((response) => response.json())
-      .then((data) => setCategory(data))
-      .catch((err) => console.log(err));
-  }, []);
+  // const [category, setCategory] = useState([]);
+
+
+  // useEffect(() => {
+  //   fetch(API + "categories/")
+  //     .then((response) => response.json())
+  //     .then((data) => setCategory(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <>
@@ -99,15 +102,15 @@ export default function Navbar() {
                       : "invisible opacity-0 transition-opacity duration-500"
                   }`}
                 >
-                  {category.length > 0 &&
+                  {category?.length > 0 &&
                     category.map((item, index) => {
                       return (
                         <li
                           key={index}
                           className="px-4 text-white pb-3 hover:cursor-pointer hover:bg-gray-800 pt-3"
                         >
-                          <a href={`/${item.name_en}`}>
-                            {locale == "en" ? item.name_en : item.name_ar}
+                          <a href={`/${item?.name_en}`}>
+                            {locale == "en" ? item?.name_en : item?.name_ar}
                           </a>
                         </li>
                       );

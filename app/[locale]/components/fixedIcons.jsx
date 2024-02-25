@@ -6,11 +6,11 @@ import { FaArrowCircleUp } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 
-function FixedIcons() {
+function FixedIcons({items}) {
   const [isVisible, setIsVisible] = useState(false);
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
-  const [items, setItems] = useState({});
-  const [loading, setLoading] = useState(false);
+  // const [items, setItems] = useState({});
+  // const [loading, setLoading] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 600) {
@@ -34,23 +34,23 @@ function FixedIcons() {
     });
   };
 
-  useEffect(() => {
-    fetch(API)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        setItems(result.profile);
-        setLoading(true);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(API)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((result) => {
+  //       setItems(result.profile);
+  //       setLoading(true);
+  //     });
+  // }, []);
 
   return (
     JSON.stringify(items) != "{}" && (
       <div className="hidden lg:block fixed z-30 left-[94%] top-[63%] caro">
         <div className=" w-[40px]  z-30 mb-2">
           <a
-            href={`${items.facebook}`}
+            href={`${items?.profile?.facebook}`}
             className="   text-blue-500 cursor-pointer font-bold text-4xl transition-all duration-300 hover:text-blue-700"
             title="Facebook"
           >
@@ -59,7 +59,7 @@ function FixedIcons() {
         </div>
         <div className="w-[40px] z-30 ">
           <a
-            href={`${items.linkedin}`}
+            href={`${items?.profile?.linkedin}`}
             className="text-blue-500 cursor-pointer font-bold text-4xl transition-all duration-300 hover:text-blue-700 mb-2"
             title="LinkedIn"
           >
@@ -78,7 +78,7 @@ function FixedIcons() {
         </div>
         <div className=" w-[40px]  z-30 mb-2">
           <a
-            href={`${items.whatsapp}`}
+            href={`${items?.profile?.whatsapp}`}
             className=" text-green-500 cursor-pointer  font-bold text-4xl transition-all duration-300 hover:text-green-700 mb-2"
             title="WhatsApp"
           >
@@ -87,7 +87,7 @@ function FixedIcons() {
         </div>
         <div className=" w-[40px]  z-30">
           <a
-            href={`${items.chat_me}`}
+            href={`${items?.profile?.chat_me}`}
             className=" text-green-500 cursor-pointer  font-bold text-4xl transition-all duration-300 hover:text-green-700 mb-2"
             title="WeChat"
           >
