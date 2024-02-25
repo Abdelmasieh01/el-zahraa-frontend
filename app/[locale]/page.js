@@ -8,7 +8,7 @@ export const fetchProfile = async () => {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
   const response = await fetch(`${API}`, {
     cache: "force-cache",
-    next: { revalidate: 5 },
+    next: { revalidate: 300 },
   });
   const profile = await response.json();
   const imageUrl = profile?.profile?.images[1]?.image
@@ -24,7 +24,7 @@ export const fetchCategories = async () => {
 
   const response2 = await fetch(`${API}categories/`, {
     cache: "force-cache",
-    next: { revalidate: 5 },
+    next: { revalidate: 300 },
   });
   const category = await response2.json();
 
@@ -37,7 +37,7 @@ export const fetchProducts = async () => {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
   const response = await fetch(`${API}products/`, {
     cache: "force-cache",
-    next: { revalidate: 5 },
+    next: { revalidate: 300 },
   });
   const products = await response.json();
   return {
@@ -48,7 +48,6 @@ export const fetchProducts = async () => {
 const page = async () => {
   const  {profile , imageUrl} = await fetchProfile();
   const  {category} = await fetchCategories();
-  const  {products} = await fetchProducts();
   return (
     <div>
       <Slider1 items={category} />
