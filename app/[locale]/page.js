@@ -22,7 +22,7 @@ export const fetchProfile = async () => {
 export const fetchCategories = async () => {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-  
+  const response2 = await fetch(`${API}categories/`, {
     next: { revalidate: 300 },
   });
   const category = await response2.json();
