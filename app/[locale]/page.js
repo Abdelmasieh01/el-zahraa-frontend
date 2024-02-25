@@ -7,7 +7,7 @@ import Slider2 from "./components/Slider2";
 export const fetchProfile = async () => {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
   const response = await fetch(`${API}`, {
-    cache: "force-cache",
+
     next: { revalidate: 300 },
   });
   const profile = await response.json();
@@ -22,8 +22,7 @@ export const fetchProfile = async () => {
 export const fetchCategories = async () => {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-  const response2 = await fetch(`${API}categories/`, {
-    cache: "force-cache",
+  
     next: { revalidate: 300 },
   });
   const category = await response2.json();
@@ -36,7 +35,7 @@ export const fetchCategories = async () => {
 export const fetchProducts = async () => {
   const API = process.env.NEXT_PUBLIC_BACKEND_API;
   const response = await fetch(`${API}products/`, {
-    cache: "force-cache",
+   
     next: { revalidate: 300 },
   });
   const products = await response.json();
